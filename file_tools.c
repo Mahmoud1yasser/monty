@@ -77,18 +77,23 @@ int parse_line(char *buffer, int line_number, int format)
 }
 
 /**
- * find_func - find the appropriate function for the opcode
+ * find_func - find the appropriate
+ 
  * @opcode: opcode
+ 
  * @value: argument of opcode
- * @format:  storage format. If 0 Nodes will be entered as a stack.
+ 
+ * @format:  storage format. If 0 Nodes
+ 
  * @ln: line number
- * if 1 nodes will be entered as a queue.
+ 
  * Return: void
- */
+*/
+ 
 void find_func(char *opcode, char *value, int ln, int format)
 {
 	int i;
-	int flag;
+	int fl;
 
 	instruction_t func_list[] = {
 		{"push", add_to_stack},
@@ -112,15 +117,15 @@ void find_func(char *opcode, char *value, int ln, int format)
 	if (opcode[0] == '#')
 		return;
 
-	for (flag = 1, i = 0; func_list[i].opcode != NULL; i++)
+	for (fl = 1, i = 0; func_list[i].opcode != NULL; i++)
 	{
 		if (strcmp(opcode, func_list[i].opcode) == 0)
 		{
 			call_fun(func_list[i].f, opcode, value, ln, format);
-			flag = 0;
+			fl = 0;
 		}
 	}
-	if (flag == 1)
+	if (fl == 1)
 		err(3, ln, opcode);
 }
 
