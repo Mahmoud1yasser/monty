@@ -22,21 +22,23 @@ void open_file(char *file_name)
 
 /**
  * read_file - reads a file
+ *
  * @fd: pointer to file descriptor
+ *
  * Return: void
- */
+*/
 
 void read_file(FILE *fd)
 {
-	int line_number, format = 0;
-	char *buffer = NULL;
-	size_t len = 0;
+	int line_n, format = 0;
+	char *buf = NULL;
+	size_t l = 0;
 
-	for (line_number = 1; getline(&buffer, &len, fd) != -1; line_number++)
+	for (line_n = 1; getline(&buf, &l, fd) != -1; line_n++)
 	{
-		format = parse_line(buffer, line_number, format);
+		format = parse_line(buf, line_n, format);
 	}
-	free(buffer);
+	free(buf);
 }
 
 
