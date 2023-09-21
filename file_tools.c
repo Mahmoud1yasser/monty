@@ -67,9 +67,9 @@ int parse_line(char *buffer, int line_number, int format)
 		return (format);
 	val = strtok(NULL, del);
 
-	if (strcmp(opc, "stack") == 0)
+	if (strcmp(op, "stack") == 0)
 		return (0);
-	if (strcmp(opc, "queue") == 0)
+	if (strcmp(op, "queue") == 0)
 		return (1);
 
 	find_func(op, val, line_number, format);
