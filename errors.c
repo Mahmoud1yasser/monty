@@ -1,24 +1,34 @@
 #include "monty.h"
 
 /**
- * err - Prints appropiate error messages determined by their error code.
- * @error_code: The error codes are the following:
- * (1) => The user does not give any file or more than one file to the program.
- * (2) => The file provided is not a file that can be opened or read.
- * (3) => The file provided contains an invalid instruction.
+ * err - Prints
+ *
+ * @error_code: The error
+ *
+ * (1) => The user does not give any file
+ *
+ * (2) => The file provided is not a file that can be opened
+ *
+ * (3) => The file provided contains
+ *
  * (4) => When the program is unable to malloc more memory.
- * (5) => When the parameter passed to the instruction "push" is not an int.
+ *
+ * (5) => When the parameter passed to the instruction "push"
+ *
  * (6) => When the stack it empty for pint.
+ *
  * (7) => When the stack it empty for pop.
- * (8) => When stack is too short for operation.
- */
+ *
+ * (8) => When stack is too short
+*/
+
 void err(int error_code, ...)
 {
-	va_list ag;
-	char *op;
-	int l_num;
+	va_list age;
+	char *oper;
+	int l_number;
 
-	va_start(ag, error_code);
+	va_start(age, error_code);
 	switch (error_code)
 	{
 		case 1:
@@ -26,18 +36,18 @@ void err(int error_code, ...)
 			break;
 		case 2:
 			fprintf(stderr, "Error: Can't open file %s\n",
-				va_arg(ag, char *));
+				va_arg(age, char *));
 			break;
 		case 3:
-			l_num = va_arg(ag, int);
-			op = va_arg(ag, char *);
-			fprintf(stderr, "L%d: unknown instruction %s\n", l_num, op);
+			l_number = va_arg(age, int);
+			oper = va_arg(age, char *);
+			fprintf(stderr, "L%d: unknown instruction %s\n", l_number, oper);
 			break;
 		case 4:
 			fprintf(stderr, "Error: malloc failed\n");
 			break;
 		case 5:
-			fprintf(stderr, "L%d: usage: push integer\n", va_arg(ag, int));
+			fprintf(stderr, "L%d: usage: push integer\n", va_arg(age, int));
 			break;
 		default:
 			break;
@@ -47,38 +57,44 @@ void err(int error_code, ...)
 }
 
 /**
- * more_err - handles errors.
+ * more_err - handles
+ *
  * @error_code: The error codes are the following:
+ *
  * (6) => When the stack it empty for pint.
+ *
  * (7) => When the stack it empty for pop.
- * (8) => When stack is too short for operation.
+ *
+ * (8) => When stack is too short
+ *
  * (9) => Division by zero.
- */
+*/
+
 void more_err(int error_code, ...)
 {
-	va_list ag;
-	char *op;
-	int l_num;
+	va_list age;
+	char *oper;
+	int l_number;
 
-	va_start(ag, error_code);
+	va_start(age, error_code);
 	switch (error_code)
 	{
 		case 6:
 			fprintf(stderr, "L%d: can't pint, stack empty\n",
-				va_arg(ag, int));
+				va_arg(age, int));
 			break;
 		case 7:
 			fprintf(stderr, "L%d: can't pop an empty stack\n",
-				va_arg(ag, int));
+				va_arg(age, int));
 			break;
 		case 8:
-			l_num = va_arg(ag, unsigned int);
-			op = va_arg(ag, char *);
-			fprintf(stderr, "L%d: can't %s, stack too short\n", l_num, op);
+			l_number = va_arg(age, unsigned int);
+			oper = va_arg(age, char *);
+			fprintf(stderr, "L%d: can't %s, stack too short\n", l_number, oper);
 			break;
 		case 9:
 			fprintf(stderr, "L%d: division by zero\n",
-				va_arg(ag, unsigned int));
+				va_arg(age, unsigned int));
 			break;
 		default:
 			break;
@@ -89,24 +105,28 @@ void more_err(int error_code, ...)
 
 /**
  * string_err - handles errors.
+ *
  * @error_code: The error codes are the following:
- * (10) ~> The number inside a node is outside ASCII bounds.
+ *
+ * (10) ~> The number inside a node is outside ASCII
+ *
  * (11) ~> The stack is empty.
- */
+*/
+
 void string_err(int error_code, ...)
 {
-	va_list ag;
-	int l_num;
+	va_list age;
+	int l_number;
 
-	va_start(ag, error_code);
-	l_num = va_arg(ag, int);
+	va_start(age, error_code);
+	l_number = va_arg(age, int);
 	switch (error_code)
 	{
 		case 10:
-			fprintf(stderr, "L%d: can't pchar, value out of range\n", l_num);
+			fprintf(stderr, "L%d: can't pchar, value out of range\n", l_number);
 			break;
 		case 11:
-			fprintf(stderr, "L%d: can't pchar, stack empty\n", l_num);
+			fprintf(stderr, "L%d: can't pchar, stack empty\n", l_number);
 			break;
 		default:
 			break;
