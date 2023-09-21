@@ -2,19 +2,21 @@
 
 /**
  * open_file - opens a file
+ *
  * @file_name: the file namepath
+ *
  * Return: void
- */
+*/
 
 void open_file(char *file_name)
 {
-	FILE *fd = fopen(file_name, "r");
+	FILE *fdes = fopen(file_name, "r");
 
-	if (file_name == NULL || fd == NULL)
+	if (file_name == NULL || fdes == NULL)
 		err(2, file_name);
 
-	read_file(fd);
-	fclose(fd);
+	read_file(fdes);
+	fclose(fdes);
 }
 
 
